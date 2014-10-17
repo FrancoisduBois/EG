@@ -45,7 +45,7 @@ public class Spawn {
                             all.getInventory().clear();
                             //Kits setzten
                             Main.getInstance().gs = GameState.Grace;
-                            grace.CountDown(16);
+                            grace.CountDown(17);
                         }
                     }
                 }
