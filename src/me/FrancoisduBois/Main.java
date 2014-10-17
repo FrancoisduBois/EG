@@ -1,8 +1,10 @@
 package me.FrancoisduBois;
 
 import me.FrancoisduBois.countdown.Lobby;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -53,6 +55,12 @@ public class Main extends JavaPlugin {
         itemStack.setItemMeta(imeta);
 
         return itemStack;
+    }
+
+    public void playSecondSound(Sound sound){
+        for(Player all : Bukkit.getOnlinePlayers()){
+            all.playSound(all.getLocation(), sound, 40F, 50F);
+        }
     }
 
 }

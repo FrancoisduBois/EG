@@ -17,7 +17,7 @@ public class Spawn {
     Grace grace = new Grace();
 
     public void CountDown(int length){
-        Count = length;
+        Count = length+1;
 
         if(Main.getInstance().gs == GameState.OnSpawn){
             count = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
@@ -33,10 +33,7 @@ public class Spawn {
                     }
                     if(Count == 20||Count==15||Count==10||Count==5||Count==4||Count==3||Count==2||Count==1){
                         Bukkit.broadcastMessage(Main.getInstance().pr+"Das Spiel beginnt in "+Count+" Sekunden");
-                        for(Player all : Bukkit.getOnlinePlayers()){
-                            all.playSound(all.getLocation(), Sound.NOTE_PIANO, 30F, 30F);
-                            all.getInventory().setItem(4, Main.getInstance().Item(Count, Count, Material.WOOL, (byte)14));
-                        }
+                        Main.getInstance().playSecondSound(Sound.NOTE_BASS);
                     }else if (Count == 0){
                         Bukkit.getScheduler().cancelTask(count);
                         Bukkit.getScheduler().cancelAllTasks();
@@ -45,7 +42,8 @@ public class Spawn {
                             all.getInventory().clear();
                             //Kits setzten
                             Main.getInstance().gs = GameState.Grace;
-                            grace.CountDown(17);
+                            grace.CountDown(15);
+                            Main.getInstance().playSecondSound(Sound.NOTE_PIANO);
                         }
                     }
                 }

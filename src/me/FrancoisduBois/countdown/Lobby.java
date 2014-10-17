@@ -18,7 +18,7 @@ public class Lobby {
     public int count;
 
     public void CountDown(int length){
-        Count = length;
+        Count = length +1;
 
         if(Main.getInstance().gs == GameState.Lobby){
             count = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
@@ -32,11 +32,7 @@ public class Lobby {
                                 Count == 2 || Count == 1) {
 
                             Bukkit.broadcastMessage(Main.getInstance().pr + "Die Runde startet in §e" + Count + " §9Sekunden");
-
-                            for (Player all : Bukkit.getOnlinePlayers()) {
-                                all.playSound(all.getLocation(), Sound.CLICK, 30F, 30F);
-                                all.setLevel(Count);
-                            }
+                            Main.getInstance().playSecondSound(Sound.ANVIL_USE);
 
                         } else if (Count == 0) {
                             if (Bukkit.getOnlinePlayers().length >= Main.getInstance().minplayers) {
@@ -44,10 +40,12 @@ public class Lobby {
                                 Bukkit.broadcastMessage(Main.getInstance().pr + "Die Runde beginnt jetzt");
                                 Main.getInstance().gs = GameState.OnSpawn;
                                 spawn.CountDown(20);
+                                Main.getInstance().playSecondSound(Sound.ANVIL_LAND);
                             } else {
                                 Bukkit.broadcastMessage(Main.getInstance().pr + "Es sind zu wenige Spieler Online");
                                 Bukkit.broadcastMessage(Main.getInstance().pr + "Der CountDown wird neu getartet");
                                 Count = 60;
+                                Main.getInstance().playSecondSound(Sound.ANVIL_BREAK);
                             }
                         }
                     }

@@ -13,7 +13,7 @@ public class Grace {
     Game game = new Game();
 
     public void CountDown(int length){
-        Count = length;
+        Count = length+1;
         if(Main.getInstance().gs == GameState.Grace) {
 
             count = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
