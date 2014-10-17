@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="EnderGames:jar">
+    <output-path>$USER_HOME$/Desktop/Bukkit server/TestServer/plugins</output-path>
+    <root id="archive" name="EnderGames.jar">
+      <element id="module-output" name="EnderGames" />
+    </root>
+  </artifact>
+</component>
